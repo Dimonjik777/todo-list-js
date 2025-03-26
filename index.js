@@ -2,8 +2,9 @@
 let tasks = [];
 
 // Take DOM elements
-let input__task = document.querySelector("input");
+let inputTask = document.querySelector("input");
 let button = document.querySelector("button");
+let taskContainer = document.querySelector(".tasks");
 
 button.addEventListener("click", addTask);
 
@@ -13,9 +14,9 @@ document.addEventListener("keydown", (event) => {
 });
 
 function addTask() {
-  const taskText = input__task.value.trim();
+  const taskText = inpuTask.value.trim();
   if(taskText != ""){
-    tasks.push({task: taskText, isComplete: false});
-    input__task.value = "";
+    tasks.push({id: Date.now(), task: taskText, isComplete: false});
+    inputTask.value = "";
   }
 }
