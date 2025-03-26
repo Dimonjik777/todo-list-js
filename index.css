@@ -1,0 +1,119 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+
+input::placeholder, p, h3, button{
+  font-family: "Inter", sans-serif;
+}
+
+.container{
+  width: 700px;
+  margin: 0 auto;
+  margin-top: 60px;
+}
+
+.input_task{
+  background-color: #F6F6F6;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  margin-bottom: 100px;
+}
+
+.input_task input{
+  margin-right: auto;
+  border:none;
+  padding: 25px 0;
+  width: 75%;
+  background-color: #F6F6F6;
+  padding-left: 25px;
+  font-size: 20px;
+  border-radius: 10px;
+}
+
+.input_task input::placeholder{
+  font-size: 20px;
+  color: #9C9C9C;
+}
+
+.input_task button{
+  margin-right: 25px;
+  font-size: 20px;
+  background-color: #D230EB;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: .2s ease all;
+}
+
+.input_task button:hover{
+  background-color: #E249FA;
+}
+
+
+.task{
+  background-color: #F6F6F6;
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+  height: 70px;
+  border-radius: 10px;
+}
+
+.task h3{
+  font-size: 20px;
+  margin-left: 25px;
+  margin-right: auto;
+  transition: .2s ease all;
+}
+
+.task .task__check{
+  display: block;
+  border:1px solid black;
+  height: 24px;
+  width: 24px;
+  border-radius: 2rem;
+  cursor: pointer;
+  margin-right: 35px;
+  position: relative;
+}
+
+.task .task__check::after{
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 2rem;
+  background-color: #78E961;
+  top: 12%;
+  left: 12%;
+  transition: 0.2s ease all;
+  transform: scale(0);
+}
+
+.task .task__check:hover::after{
+  transform: scale(0.5);
+}
+
+.task.active .task__check::after{
+  transform: scale(1);
+}
+
+.task.active h3{
+  color: #78E961;
+}
+
+.task .task__delete{
+  font-size: 32px;
+  font-weight: 700;
+  margin-right: 25px;
+  cursor: pointer;
+  transition: .3s ease all;
+}
+
+.task .task__delete:hover{
+  color: #AF4C4C;
+}
