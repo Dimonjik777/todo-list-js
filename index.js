@@ -43,13 +43,11 @@ function render() {
         // Add content
         taskTitle.textContent = element.task;
         taskDelete.textContent = "X";
-    
-        // Add ID task
-        taskCheck.setAttribute("task__id", element.id);
 
         // Add eventlisteners
         taskDelete.addEventListener("click", () => deleteTask(element.id));
-    
+        taskCheck.addEventListener("click", (event) => completeTask(event, element.id));
+
         // Insert elements into container
         taskContainer.append(taskTitle);
         taskContainer.append(taskCheck);
@@ -64,4 +62,14 @@ function render() {
 function deleteTask(id){
   tasks = tasks.filter(element => element.id !== id);
   render();
+}
+
+function completeTask(event, id){
+
+  tasks = tasks.map(element => 
+      element.id === id ? {...element, isComplete: !element.isComplete} : element
+  );
+  
+  let taskContainer = event.target.closest(".task");
+  taskContainer.classList.toggle("active");
 }
