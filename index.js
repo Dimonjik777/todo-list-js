@@ -23,14 +23,12 @@ function addTask() {
   }
 }
 
-// Реалізувати рендер задач через метод map
-
 function render() {
 
   // Clear tasks container
   tasksContainer.innerHTML = "";
 
-  tasks.map(element => {
+  tasks.forEach(element => {
         // Create elements in task for HTML
         let taskTitle = document.createElement("h3");
         let taskCheck = document.createElement("div");
@@ -48,7 +46,9 @@ function render() {
     
         // Add ID task
         taskCheck.setAttribute("task__id", element.id);
-        taskDelete.setAttribute("task_id", element.id);
+
+        // Add eventlisteners
+        taskDelete.addEventListener("click", () => deleteTask(element.id));
     
         // Insert elements into container
         taskContainer.append(taskTitle);
@@ -59,5 +59,9 @@ function render() {
         tasksContainer.append(taskContainer);
     
   })
-  
+}
+
+function deleteTask(id){
+  tasks = tasks.filter(element => element.id !== id);
+  render();
 }
