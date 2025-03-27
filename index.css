@@ -117,3 +117,31 @@ input::placeholder, p, h3, button{
 .task .task__delete:hover{
   color: #AF4C4C;
 }
+
+.tasks{
+  height: 600px;
+  overflow: auto;
+}
+
+.options{
+  margin-top: 30px;
+}
+
+.options button{
+  background-color: #F6F6F6;
+  border: none;
+  font-size: 24px;
+  padding: 10px 15px;
+  cursor: pointer;
+  opacity: 0.35;
+  border-radius: 10px;
+  transition: .2s ease all;
+}
+
+.options button:hover{
+  opacity: 0.75;
+}
+
+.options button.active{
+  opacity: 1;
+}
