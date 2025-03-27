@@ -5,12 +5,41 @@ let tasks = [];
 let inputTask = document.querySelector("input");
 let button = document.querySelector("button");
 let tasksContainer = document.querySelector(".tasks");
+let options = document.querySelectorAll(".options button")
+
+// State variable
+let stateTasks = "All";
 
 button.addEventListener("click", addTask);
 
 document.addEventListener("keydown", (event) => {
   if(event.key === "Enter")
     addTask();
+});
+
+options.forEach(element => {
+
+  element.addEventListener("click", (event) => {
+    
+    // Delete acitve class in all buttons and add to active button
+    event.target.parentElement.querySelectorAll("button").forEach(el => el.classList.remove("active"));
+    event.target.classList.add("active");
+    
+    // Change state for render
+    if(event.target.textContent == "All"){
+      stateTasks = "All";
+    }
+    if(event.target.textContent == "Complete"){
+      stateTasks = "Complete";
+    }
+    if(event.target.textContent == "Uncomplete"){
+      stateTasks = "Uncomplete";
+    }
+
+    render();
+
+  });
+
 });
 
 function addTask() {
@@ -28,7 +57,12 @@ function render() {
   // Clear tasks container
   tasksContainer.innerHTML = "";
 
-  tasks.forEach(element => {
+  // Select tasks based on status
+  let tasksFiltered = stateTasks == "All" ? tasks : 
+  stateTasks == "Complete" ? tasks.filter(element => element.isComplete) : tasks.filter(element => !element.isComplete);
+
+
+  tasksFiltered.forEach(element => {
         // Create elements in task for HTML
         let taskTitle = document.createElement("h3");
         let taskCheck = document.createElement("div");
@@ -43,6 +77,11 @@ function render() {
         // Add content
         taskTitle.textContent = element.task;
         taskDelete.textContent = "X";
+
+        // Render complete task
+        if(element.isComplete){
+          taskContainer.classList.add("active");
+        }
 
         // Add eventlisteners
         taskDelete.addEventListener("click", () => deleteTask(element.id));
@@ -72,4 +111,7 @@ function completeTask(event, id){
   
   let taskContainer = event.target.closest(".task");
   taskContainer.classList.toggle("active");
+
+  setTimeout(() => render(), 300);
+  
 }
