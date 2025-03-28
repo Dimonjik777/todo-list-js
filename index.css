@@ -3,7 +3,7 @@ body{
   padding: 0;
 }
 
-input::placeholder, p, h3, button{
+input::placeholder, p, h3, button, h1{
   font-family: "Inter", sans-serif;
 }
 
@@ -144,4 +144,8 @@ input::placeholder, p, h3, button{
 
 .options button.active{
   opacity: 1;
+}
+
+h1{
+  text-align: center;
 }
