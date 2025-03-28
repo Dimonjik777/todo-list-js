@@ -114,6 +114,10 @@ function render() {
     }
     tasksContainer.append(message);
   }
+
+  // Save tasks in local storage
+  localStorage.tasks = JSON.stringify(tasks);
+
 }
 
 function deleteTask(id) {
