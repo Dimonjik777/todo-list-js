@@ -1,5 +1,5 @@
-// Storage with tasks
-let tasks = [];
+// Loading tasks from local storage
+let tasks = JSON.parse(localStorage.tasks) || [];
 
 // Take DOM elements
 let inputTask = document.querySelector("input");
